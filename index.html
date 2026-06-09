@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Reytox — Portfolio</title>
+</head>
+<body>
+
+    <!-- ====== LOADING SCREEN ====== -->
+    <div id="sl-loading-screen">
+
+        <!-- Scanline overlay -->
+        <div class="sl-load-scanlines"></div>
+
+        <!-- Particle canvas -->
+        <canvas id="sl-load-canvas"></canvas>
+
+        <!-- Runic circle background -->
+        <div class="sl-load-rune-bg">
+            <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="sl-load-sigil-svg">
+                <circle cx="300" cy="300" r="270" fill="none" stroke="#9b5de5" stroke-width="1" stroke-dasharray="8 5" class="sl-rune-circle-1"/>
+                <circle cx="300" cy="300" r="220" fill="none" stroke="#c77dff" stroke-width="0.6" stroke-dasharray="3 6" class="sl-rune-circle-2"/>
+                <circle cx="300" cy="300" r="160" fill="none" stroke="#9b5de5" stroke-width="1.2" class="sl-rune-circle-3"/>
+                <circle cx="300" cy="300" r="90"  fill="none" stroke="#4cc9f0" stroke-width="0.8" stroke-dasharray="4 4" class="sl-rune-circle-4"/>
+                <!-- Outer polygon -->
+                <polygon points="300,30 367,220 560,220 410,338 467,530 300,415 133,530 190,338 40,220 233,220"
+                         fill="none" stroke="#9b5de5" stroke-width="1.5" opacity="0.7" class="sl-rune-poly"/>
+                <!-- Inner star -->
+                <polygon points="300,130 325,228 430,228 346,285 374,385 300,330 226,385 254,285 170,228 275,228"
+                         fill="none" stroke="#c77dff" stroke-width="1" opacity="0.5" class="sl-rune-poly-2"/>
+                <!-- Cross lines -->
+                <line x1="300" y1="30"  x2="300" y2="570" stroke="#6a00ff" stroke-width="0.5" opacity="0.4"/>
+                <line x1="30"  y1="300" x2="570" y2="300" stroke="#6a00ff" stroke-width="0.5" opacity="0.4"/>
+                <line x1="88"  y1="88"  x2="512" y2="512" stroke="#6a00ff" stroke-width="0.4" opacity="0.3"/>
+                <line x1="512" y1="88"  x2="88"  y2="512" stroke="#6a00ff" stroke-width="0.4" opacity="0.3"/>
+                <!-- Center glyph -->
+                <text x="300" y="314" text-anchor="middle" font-size="28" fill="#9b5de5" font-family="serif" letter-spacing="6" opacity="0.9" class="sl-arise-text">ARISE</text>
+            </svg>
+        </div>
+
+        <!-- Main content -->
+        <div class="sl-load-content">
+
+            <!-- Top system notice -->
+            <div class="sl-load-system-notice">
+                <span class="sl-load-bracket">[</span>
+                <span class="sl-load-notice-text">SYSTEM INITIALIZING</span>
+                <span class="sl-load-bracket">]</span>
+            </div>
+
+            <!-- Title -->
+            <div class="sl-load-title-wrap">
+                <h1 class="sl-load-title">REYTOX</h1>
+                <div class="sl-load-title-sub">— The Determined One —</div>
+            </div>
+
+            <!-- Shadow monarch crown icon -->
+            <div class="sl-load-crown">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+
+            <!-- Progress bar area -->
+            <div class="sl-load-bar-wrap">
+                <div class="sl-load-bar-label">
+                    <span class="sl-load-bar-label-left">HUNTER STATUS</span>
+                    <span class="sl-load-bar-pct" id="slLoadPct">0%</span>
+                </div>
+                <div class="sl-load-bar-track">
+                    <div class="sl-load-bar-fill" id="slLoadBar"></div>
+                    <div class="sl-load-bar-glow"></div>
+                </div>
+                <div class="sl-load-bar-status" id="slLoadStatus">Awakening...</div>
+            </div>
+
+            <!-- Rank badge -->
+            <div class="sl-load-rank-badge">
+                <span class="sl-load-rank-s">S</span>
+                <span class="sl-load-rank-label">RANK HUNTER</span>
+            </div>
+
+        </div>
+
+        <!-- Flash overlay for exit -->
+        <div class="sl-load-flash" id="slLoadFlash"></div>
+
+    </div>
+    <!-- ====== END LOADING SCREEN ====== -->
+
+    <!-- ====== HEADER ====== -->
+    <header id="header">
+        <a href="#" class="logo">Reytox</a>
+        <nav>
+            <a href="#" class="nav-link active" data-page="1">Beranda</a>
+            <a href="#" class="nav-link" data-page="4">About</a>
+            <a href="#" class="nav-link" data-page="2">Keahlian</a>
+            <a href="#" class="nav-link" data-page="3">Galeri</a>
+        </nav>
+    </header>
+
+    <div class="pages-wrapper">
+    <main>
+
+        <!-- ==================== PAGE 1: BERANDA ==================== -->
+        <div class="page active" id="page-1">
+        <section class="home" id="home">
+            <div class="home-image">
+                <img src="0bf5d254-e6d7-439d-b7e4-0ba17a1a6a85.png" alt="" width="500">
+            </div>
+            <div class="home-content">
+                <h1>Hai, Saya <span>Reytox</span></h1>
+                <h3 class="typing-text">saya seorang <span></span></h3>
+                <p>Mahasiswa Teknik Multimedia & Jaringan di <strong>Politeknik Negeri Ujung Pandang</strong>. Passionate dalam dunia desain grafis, web development, dan konten digital. Berambisi menjadi kreator digital yang berdampak — satu karya dalam satu waktu.</p>
+            </div>
+        </section>
+        </div>
+
+        <!-- ==================== PAGE 2: KEAHLIAN ==================== -->
+        <div class="page" id="page-2">
+
+        <section class="skill">
+            <div class="section-header">
+                <h2 class="heading">Keahlian Saya</h2>
+                <p class="section-subtitle">Bidang yang saya tekuni dan kembangkan</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-user"></i></div>
+                    <h3>Desain Grafis</h3>
+                    <p>Membuat desain visual seperti poster, logo, dan konten media sosial menggunakan Photoshop dan CorelDraw.</p>
+                    <div class="skill-progress"><div class="skill-bar" style="--w:80%"></div></div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-wrench"></i></div>
+                    <h3>Teknologi & Perakitan</h3>
+                    <p>Kemampuan dasar perangkat keras, perakitan komputer, dan troubleshooting jaringan.</p>
+                    <div class="skill-progress"><div class="skill-bar" style="--w:65%"></div></div>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div>
+                    <h3>Pemrograman Web</h3>
+                    <p>Membangun tampilan web interaktif menggunakan HTML, CSS, dan JavaScript.</p>
+                    <div class="skill-progress"><div class="skill-bar" style="--w:70%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <div class="section-header">
+                <h2 class="heading">Video Project</h2>
+                <p class="section-subtitle">Karya video yang pernah saya buat</p>
+            </div>
+
+            <!-- VIDEO CARD: Motion Grafis -->
+            <div class="video-card-wrap">
+                <div class="video-card-label">
+                    <i class="fa-solid fa-film"></i>
+                    <span>Iklan Sederhana — Motion Grafis</span>
+                </div>
+                <div class="video-wrapper">
+                    <video id="videoPlayer" controls preload="metadata">
+                        <source src="Video/video_browser_compatible.mp4" type="video/quicktime">
+                        <source src="Video/video_browser_compatible.mp4" type="video/mp4">
+                        Browser kamu tidak mendukung pemutaran video.
+                    </video>
+                </div>
+                <div class="video-card-desc">
+                    <p>Proyek motion grafis berupa iklan sederhana yang dibuat sebagai tugas multimedia. Menggabungkan elemen tipografi, animasi, dan transisi visual yang dinamis.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="contact">
+            <div class="section-header">
+                <h2 class="heading">Kontak Saya</h2>
+                <p class="section-subtitle">Hubungi saya melalui platform berikut</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-box">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="https://wa.me/6289520540777" target="_blank">+62 895-2054-0777</a>
+                </div>
+                <div class="contact-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:reyhannaurah@gmail.com">reyhannaurah@gmail.com</a>
+                </div>
+            </div>
+            <p class="footer-text">© 2025 Reytox — The Determined One.</p>
+        </footer>
+
+        </div>
+
+        <!-- ==================== PAGE 3: GALERI ==================== -->
+        <div class="page" id="page-3">
+
+        <!-- GALERI KARYA -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <h2 class="heading">Galeri </h2>
+                <p class="section-subtitle">Sertifikat yang saya peroleh dari Lombah dan Pelatihan</p>
+            </div>
+
+            <div class="gallery-grid">
+
+                <!--
+                ╔══════════════════════════════════════════════════════════╗
+                ║  KARTU GALERI 1                                          ║
+                ║  Ganti src="gambar/karya1.jpg" → nama file gambar kamu   ║
+                ║  Simpan gambar di subfolder "gambar/" atau folder sama    ║
+                ╚══════════════════════════════════════════════════════════╝
+                -->
+                <div class="gallery-card" onclick="openLightbox('gambar/WhatsApp Image 2026-06-08 at 19.59.41.jpeg')">
+                    <div class="gallery-thumb">
+                        <img src="gambar/WhatsApp Image 2026-06-08 at 19.59.41.jpeg" alt="Sertifikat 1" class="thumb-img"
+                             onerror="this.parentElement.classList.add('no-img')">
+                        <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Sertifikat</span>
+                        <h3>Sertifikat Microsoft Office Specialist</h3>
+                        <p>Sertifikat yang saya peroleh pada September 6, 2024 dalam rangkah pelatihan Microsoft Excel.</p>
+                    </div>
+                </div>
+
+                <!--
+                ╔══════════════════════════════════════════════════════════╗
+                ║  KARTU GALERI 2                                          ║
+                ║  Ganti src="gambar/karya2.jpg" → nama file gambar kamu   ║
+                ╚══════════════════════════════════════════════════════════╝
+                -->
+                <div class="gallery-card" onclick="openLightbox('gambar/WhatsApp Image 2026-06-08 at 19.59.42.jpeg')">
+                    <div class="gallery-thumb">
+                        <img src="gambar/WhatsApp Image 2026-06-08 at 19.59.42.jpeg" alt="Sertifikat 2" class="thumb-img"
+                             onerror="this.parentElement.classList.add('no-img')">
+                        <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Sertifikat</span>
+                        <h3>Sertifikat Lombah Paskib</h3>
+                        <p>Sertifikat Paskib di SMK pada 2 Juni 2024 sebagai peserta yang mengikuti ajang lombah Uleg Flag Force Competition.</p>
+                    </div>
+                </div>
+
+                <!--
+                ╔══════════════════════════════════════════════════════════╗
+                ║  KARTU GALERI 3                                          ║
+                ║  Ganti src="gambar/karya3.jpg" → nama file gambar kamu   ║
+                ╚══════════════════════════════════════════════════════════╝
+                -->
+                <div class="gallery-card" onclick="openLightbox('gambar/WhatsApp Image 2026-06-08 at 20.04.08.jpeg')">
+                    <div class="gallery-thumb">
+                        <img src="gambar/WhatsApp Image 2026-06-08 at 20.04.08.jpeg" alt="Sertifikat 3" class="thumb-img"
+                             onerror="this.parentElement.classList.add('no-img')">
+                        <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Sertifikat</span>
+                        <h3>Sertifikat Mini Bootcamp</h3>
+                        <p>Sertifikat program pelatihan Mini Bootcamp Web Development yang diikuti sebagai bagian dari pengembangan diri di PNUP pada 15 Oktober 2025.</p>
+                    </div>
+                </div>
+
+                <!--
+                ╔══════════════════════════════════════════════════════════╗
+                ║  KARTU GALERI 4                                          ║
+                ║  Ganti src="gambar/karya4.jpg" → nama file gambar kamu   ║
+                ╚══════════════════════════════════════════════════════════╝
+                -->
+                <div class="gallery-card" onclick="openLightbox('gambar/WhatsApp Image 2026-06-08 at 20.04.47.jpeg')">
+                    <div class="gallery-thumb">
+                        <img src="gambar/WhatsApp Image 2026-06-08 at 20.04.47.jpeg" alt="Sertifikat 4" class="thumb-img"
+                             onerror="this.parentElement.classList.add('no-img')">
+                        <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                    </div>
+                    <div class="gallery-info">
+                        <span class="gallery-tag">Sertifikat</span>
+                        <h3>Sertifikat Pelaksanaan PKL</h3>
+                        <p>Sertifikat yang saya dapat kan dengan mengikuti pelatihan Praktik Kerja Lapangan.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LIGHTBOX dengan zoom -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="lightbox-zoom-hint">Scroll / pinch untuk zoom &nbsp;&middot;&nbsp; Drag untuk geser</div>
+            <div class="lightbox-img-wrap" id="lightboxWrap">
+                <img src="" alt="" id="lightboxImg">
+            </div>
+            <div class="lightbox-zoom-btns">
+                <button onclick="lbZoom(0.25)"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <button onclick="lbZoomReset()"><i class="fa-solid fa-compress"></i></button>
+                <button onclick="lbZoom(-0.25)"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+            </div>
+        </div>
+
+        <!-- GALERI MUSIK -->
+        <section class="music-section">
+            <div class="section-header">
+                <h2 class="heading">Galeri Musik</h2>
+                <p class="section-subtitle">Playlist favorit yang menemani hari-hari saya</p>
+            </div>
+
+            <div class="music-grid">
+
+                <!--
+                ╔══════════════════════════════════════════════════════════╗
+                ║  KARTU MUSIK 1                                           ║
+                ║  Ganti data-src="musik/apt.mp3" → nama file lagu kamu   ║
+                ║  Simpan lagu di subfolder "musik/"                       ║
+                ║  Ganti juga cover-src="gambar/cover-apt.jpg" (opsional)  ║
+                ╚══════════════════════════════════════════════════════════╝
+                -->
+                <div class="music-card-new art-1" data-src="musik\George Benson - Nothings Gonna Change My Love For You (Official Audio).mp3" data-index="0"
+                     cover-src="gambar\George Benson.jpg">
+                    <div class="music-thumb">
+                        <img class="music-cover-img" src="" alt="" onerror="this.style.display='none'">
+                        <div class="music-disc-wrap">
+                            <i class="fa-solid fa-compact-disc disc-icon"></i>
+                        </div>
+                        <div class="music-play-overlay" onclick="toggleMusicPlay(0)">
+                            <i class="fa-solid fa-play mc-play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="music-card-info">
+                        <span class="music-genre-tag">Soft Rock / Pop</span>
+                        <h3>Nothings Gonna Change My Love For You.</h3>
+                        <span class="music-artist-name">George Benson</span>
+                        <div class="music-progress-wrap">
+                            <div class="music-progress-bar" onclick="seekAudio(0, event)">
+                                <div class="music-progress-fill"></div>
+                            </div>
+                            <div class="music-time">
+                                <span class="time-current">0:00</span>
+                                <span class="time-total">0:00</span>
+                            </div>
+                        </div>
+                        <div class="music-eq-bars"><span></span><span></span><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+
+                <!--
+                ╔═══════════════════════════════════════════════╗
+                ║  KARTU MUSIK 2                                ║
+                ║  Ganti data-src="musik/dynamite.mp3"          ║
+                ╚═══════════════════════════════════════════════╝
+                -->
+                <div class="music-card-new art-2" data-src="musik\Michael Jackson - Chicago (Official Audio).mp3" data-index="1"
+                     cover-src="gambar\Chicago.jpg">
+                    <div class="music-thumb">
+                        <img class="music-cover-img" src="" alt="" onerror="this.style.display='none'">
+                        <div class="music-disc-wrap">
+                            <i class="fa-solid fa-compact-disc disc-icon"></i>
+                        </div>
+                        <div class="music-play-overlay" onclick="toggleMusicPlay(1)">
+                            <i class="fa-solid fa-play mc-play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="music-card-info">
+                        <span class="music-genre-tag">Funky &amp; Pop</span>
+                        <h3>Chicago</h3>
+                        <span class="music-artist-name">Michael Jackson</span>
+                        <div class="music-progress-wrap">
+                            <div class="music-progress-bar" onclick="seekAudio(1, event)">
+                                <div class="music-progress-fill"></div>
+                            </div>
+                            <div class="music-time">
+                                <span class="time-current">0:00</span>
+                                <span class="time-total">0:00</span>
+                            </div>
+                        </div>
+                        <div class="music-eq-bars"><span></span><span></span><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+
+                <!--
+                ╔═══════════════════════════════════════════════════╗
+                ║  KARTU MUSIK 3                                    ║
+                ║  Ganti data-src="musik/blinding-lights.mp3"       ║
+                ╚═══════════════════════════════════════════════════╝
+                -->
+                <div class="music-card-new art-3" data-src="musik\Charlie Puth - Beat Yourself Up (Performance Video).mp3" data-index="2"
+                     cover-src="gambar\images (1).jpg">
+                    <div class="music-thumb">
+                        <img class="music-cover-img" src="" alt="" onerror="this.style.display='none'">
+                        <div class="music-disc-wrap">
+                            <i class="fa-solid fa-compact-disc disc-icon"></i>
+                        </div>
+                        <div class="music-play-overlay" onclick="toggleMusicPlay(2)">
+                            <i class="fa-solid fa-play mc-play-icon"></i>
+                        </div>
+                    </div>
+                    <div class="music-card-info">
+                        <span class="music-genre-tag">Pop</span>
+                        <h3>Beat Yourself Up</h3>
+                        <span class="music-artist-name">Charlie Puth</span>
+                        <div class="music-progress-wrap">
+                            <div class="music-progress-bar" onclick="seekAudio(2, event)">
+                                <div class="music-progress-fill"></div>
+                            </div>
+                            <div class="music-time">
+                                <span class="time-current">0:00</span>
+                                <span class="time-total">0:00</span>
+                            </div>
+                        </div>
+                        <div class="music-eq-bars"><span></span><span></span><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <footer class="contact mini-footer">
+            <p class="footer-text">© 2025 Reytox — The Determined One.</p>
+        </footer>
+
+        </div>
+
+        <!-- ==================== PAGE 4: ABOUT ME ==================== -->
+        <div class="page" id="page-4">
+
+            <!-- Partikel latar -->
+            <div class="sl-particles" id="slParticles"></div>
+
+            <section class="about-section">
+
+                <!-- Kiri: foto -->
+                <div class="about-photo-wrap">
+                    <div class="aura-ring aura-ring-1"></div>
+                    <div class="aura-ring aura-ring-2"></div>
+                    <div class="aura-ring aura-ring-3"></div>
+                    <div class="aura-sparks">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span>
+                    </div>
+                    <div class="about-photo-circle">
+                        <img src="0bf5d254-e6d7-439d-b7e4-0ba17a1a6a85.png" alt="Reytox" class="about-photo-img">
+                        <div class="photo-awakening-overlay"></div>
+                    </div>
+                    <div class="about-title-badge">
+                        <i class="fa-solid fa-crown"></i>
+                        <span>The Determined One</span>
+                    </div>
+                </div>
+
+                <!-- Kanan: konten -->
+                <div class="about-content">
+
+                    <div class="about-system-notice">
+                        <i class="fa-solid fa-bell"></i>
+                        <span>[ A new hunter has arisen ]</span>
+                    </div>
+
+                    <h2 class="about-name">M. Raihan R.<span class="about-alias"> / Reytox</span></h2>
+
+                    <div class="about-stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Rank</span>
+                            <span class="stat-val rank-s">S</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Usia</span>
+                            <span class="stat-val">18</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Kelas</span>
+                            <span class="stat-val">Multimedia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Guild</span>
+                            <span class="stat-val">PNUP</span>
+                        </div>
+                    </div>
+
+                    <p class="about-desc">
+                        Mahasiswa Teknik Multimedia dan Jaringan di Politeknik Negeri Ujung Pandang.
+                        Berambisi menjadi kreator konten digital dan YouTuber. Memiliki ketertarikan
+                        mendalam pada desain grafis, teknologi jaringan, dan pemrograman web.
+                        Percaya bahwa setiap karya adalah dungeon yang menunggu untuk ditaklukkan.
+                    </p>
+
+                    <div class="about-skills-list">
+                        <div class="skill-chip"><i class="fa-solid fa-wand-magic-sparkles"></i> Desain Grafis</div>
+                        <div class="skill-chip"><i class="fa-solid fa-code"></i> Web Dev</div>
+                        <div class="skill-chip"><i class="fa-solid fa-network-wired"></i> Jaringan</div>
+                        <div class="skill-chip"><i class="fa-solid fa-video"></i> Konten Digital</div>
+                        <div class="skill-chip"><i class="fa-brands fa-youtube"></i> YouTube</div>
+                    </div>
+
+                    <div class="about-quote">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>"Saya tidak akan berhenti berkembang — sampai saya di puncak."</p>
+                    </div>
+
+                    <div class="about-socials">
+                        <a href="https://github.com/" target="_blank" class="about-social-btn"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://wa.me/6289520540777" target="_blank" class="about-social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://discord.com/users/695873616465625089" target="_blank" class="about-social-btn"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+        <!-- end page-4 -->
+
+    </main>
+    </div>
+
+    <!-- ═══ SOLO LEVELING FX ELEMENTS ═══ -->
+
+    <!-- Mana particle canvas -->
+    <canvas id="sl-mana-canvas"></canvas>
+
+    <!-- Dungeon portal (pojok kiri bawah) -->
+    <div class="sl-portal">
+        <div class="sl-portal-inner"></div>
+        <div class="sl-portal-ring"></div>
+        <div class="sl-portal-ring2"></div>
+    </div>
+
+    <!-- Lightning flash overlay -->
+    <div id="sl-lightning"></div>
+
+    <!-- Cursor aura -->
+    <div id="sl-cursor-aura"></div>
+    <div id="sl-cursor-trail"></div>
+
+    <!-- Shadow Monarch sigil SVG watermark -->
+    <svg class="sl-sigil" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="100,10 118,70 180,70 130,108 148,170 100,135 52,170 70,108 20,70 82,70"
+                 fill="none" stroke="#9b5de5" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="85" fill="none" stroke="#9b5de5" stroke-width="0.8" stroke-dasharray="6 4"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#c77dff" stroke-width="0.5"/>
+        <polygon points="100,35 112,78 158,78 122,103 135,148 100,124 65,148 78,103 42,78 88,78"
+                 fill="none" stroke="#6a00ff" stroke-width="0.6" opacity="0.6"/>
+        <text x="100" y="106" text-anchor="middle" font-size="14" fill="#9b5de5" font-family="serif" letter-spacing="2">ARISE</text>
+    </svg>
+
+    <!-- Page transition flash -->
+    <div class="page-flash-overlay" id="pageFlash"></div>
+
+    <!-- Solo Leveling ambient runes -->
+    <div class="sl-rune sl-rune-1">⬡</div>
+    <div class="sl-rune sl-rune-2">⬢</div>
+
+    <!-- System notification badge -->
+    <div class="sl-system-badge" id="slBadge">
+        <i class="fa-solid fa-bell"></i><span id="slBadgeText">[ System ]</span>
+    </div>
+
+    <script src="Awikwok.js"></script>
+</body>
+</html>
